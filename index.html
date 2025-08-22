@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="pages/basic.html" class="nav-link">Básico</a></li>
+                    <li><a href="pages/intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="pages/joins.html" class="nav-link">JOINS</a></li>
+                    <!-- <li><a href="pages/playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="pages/exercise.html" class="nav-link">Exercícios</a></li>
+                    <li><a href="pages/advanced.html" class="nav-link">Avançado</a></li>
+                    <li><a href="pages/cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Bem-vindo ao SQL Tutor</h1>
+            <p>SQL (Structured Query Language) é a linguagem padrão para gerenciar bancos de dados relacionais. Este site oferece um guia completo do básico ao intermediário, com tópicos avançados, exercícios práticos e um playground interativo.</p>
+            
+            <div class="cards-container">
+                <div class="card" onclick="window.location = 'pages/basic.html'">
+                    <div class="card-icon">📘</div>
+                    <h3>SQL Básico</h3>
+                    <p>Comece com os fundamentos: CREATE TABLE, SELECT, INSERT, UPDATE, DELETE e WHERE.</p>
+                </div>
+                
+                <div class="card" onclick="window.location = 'pages/intermediate.html'">
+                    <div class="card-icon">📗</div>
+                    <h3>SQL Intermediário</h3>
+                    <p>Aprimore suas habilidades: ORDER BY, funções de agregação, GROUP BY, HAVING e subqueries.</p>
+                </div>
+                
+                <div class="card" onclick="window.location = 'pages/joins.html'">
+                    <div class="card-icon">🔗</div>
+                    <h3>JOINS</h3>
+                    <p>Domine os diferentes tipos de JOIN com animações interativas e exemplos práticos.</p>
+                </div>
+                
+                <!-- <div class="card" onclick="window.location = 'pages/playground.html'">
+                    <div class="card-icon">🛝</div>
+                    <h3>Playground</h3>
+                    <p>Pratique SQL em um ambiente seguro com dados simulados e feedback imediato.</p>
+                </div> -->
+                
+                <div class="card" onclick="window.location = 'pages/exercise.html'">
+                    <div class="card-icon">📝</div>
+                    <h3>Exercícios</h3>
+                    <p>Teste seus conhecimentos com quizzes interativos e receba feedback detalhado.</p>
+                </div>
+                
+                <div class="card" onclick="window.location = 'pages/advanced.html'">
+                    <div class="card-icon">🚀</div>
+                    <h3>Tópicos Avançados</h3>
+                    <p>Explore conceitos avançados como stored procedures, triggers, views e otimização.</p>
+                </div>
+                
+                <div class="card" onclick="window.location = 'pages/cheat-sheet.html'">
+                    <div class="card-icon">📋</div>
+                    <h3>Cheat Sheet</h3>
+                    <p>Uma referência rápida com os comandos SQL mais utilizados e exemplos práticos.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

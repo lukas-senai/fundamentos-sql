@@ -1,0 +1,208 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="basic.html" class="nav-link">Básico</a></li>
+                    <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="joins.html" class="nav-link">JOINS</a></li>
+                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="exercise.html" class="nav-link">Exercícios</a></li>
+                    <li><a href="advanced.html" class="nav-link">Avançado</a></li>
+                    <li><a href="cheat-sheet.html" class="nav-link active">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Cheat Sheet - Referência Rápida</h1>
+            <p>Uma lista rápida dos comandos SQL mais utilizados para consulta durante seus estudos e desenvolvimento.</p>
+            
+            <h2>Definição de Dados (DDL)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Comando</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CREATE TABLE</td>
+                        <td>Cria uma nova tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">CREATE TABLE</span> Pessoas (
+id <span class="sql-keyword">INT PRIMARY KEY</span>,
+nome <span class="sql-keyword">VARCHAR</span>(100)
+);</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ALTER TABLE</td>
+                        <td>Modifica a estrutura de uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">ALTER TABLE</span> Pessoas
+<span class="sql-keyword">ADD</span> idade <span class="sql-keyword">INT</span>;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DROP TABLE</td>
+                        <td>Exclui uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">DROP TABLE</span> Pessoas;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Manipulação de Dados (DML)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Comando</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SELECT</td>
+                        <td>Recupera dados de uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">SELECT</span> nome, idade
+<span class="sql-keyword">FROM</span> Pessoas;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>INSERT</td>
+                        <td>Insere novos dados em uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">INSERT INTO</span> Pessoas (nome, idade)
+<span class="sql-keyword">VALUES</span> ('João', 25);</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>UPDATE</td>
+                        <td>Atualiza dados existentes em uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">UPDATE</span> Pessoas
+<span class="sql-keyword">SET</span> idade = 26
+<span class="sql-keyword">WHERE</span> nome = 'João';</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>Exclui dados de uma tabela</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">DELETE FROM</span> Pessoas
+<span class="sql-keyword">WHERE</span> idade > 30;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Cláusulas e Funções</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Comando</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WHERE</td>
+                        <td>Filtra registros com base em condições</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Pessoas
+<span class="sql-keyword">WHERE</span> idade > 18;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORDER BY</td>
+                        <td>Ordena os resultados</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Pessoas
+<span class="sql-keyword">ORDER BY</span> nome <span class="sql-keyword">ASC</span>;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GROUP BY</td>
+                        <td>Agrupa registros com valores iguais</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">SELECT</span> idade, <span class="sql-keyword">COUNT</span>(*)
+<span class="sql-keyword">FROM</span> Pessoas
+<span class="sql-keyword">GROUP BY</span> idade;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>JOIN</td>
+                        <td>Combina registros de duas ou mais tabelas</td>
+                        <td>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                <pre><code><span class="sql-keyword">SELECT</span> p.nome, c.nome
+<span class="sql-keyword">FROM</span> Pessoas p
+<span class="sql-keyword">INNER JOIN</span> Cidades c
+<span class="sql-keyword">ON</span> p.cidade_id = c.id;</code></pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>

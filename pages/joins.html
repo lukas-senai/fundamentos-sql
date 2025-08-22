@@ -1,0 +1,343 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="basic.html" class="nav-link">Básico</a></li>
+                    <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="joins.html" class="nav-link active">JOINS</a></li>
+                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="exercise.html" class="nav-link">Exercícios</a></li>
+                    <li><a href="advanced.html" class="nav-link">Avançado</a></li>
+                    <li><a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>JOINS em SQL</h1>
+            <p>JOINS são usados para combinar registros de duas ou mais tabelas com base em uma coluna relacionada entre elas. Dominar os diferentes tipos de JOIN é essencial para trabalhar com bancos de dados relacionais.</p>
+            
+            <h2>INNER JOIN</h2>
+            <p>O <strong>INNER JOIN</strong> retorna apenas os registros que têm correspondência em ambas as tabelas. É o tipo mais comum de JOIN.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">INNER JOIN</span> Cursos c <span class="sql-keyword">ON</span> a.curso_id = c.id;</code></pre>
+            </div>
+            
+            <div class="join-visual">
+                <div class="join-caption">Visualização do INNER JOIN: Apenas os registros com correspondência em ambas as tabelas são retornados</div>
+            </div>
+            
+            <div class="join-demo" id="inner-join-demo">
+                <div class="tables-container">
+                    <div class="table-vis">
+                        <h4>Alunos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell key-cell">curso_id</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Ana</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">João</div>
+                            <div class="table-cell key-cell">2</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Maria</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                        <div class="table-row" data-id="4">
+                            <div class="table-cell key-cell">4</div>
+                            <div class="table-cell">Pedro</div>
+                            <div class="table-cell key-cell">NULL</div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-vis">
+                        <h4>Cursos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell">area</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Engenharia</div>
+                            <div class="table-cell">Exatas</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">Medicina</div>
+                            <div class="table-cell">Saúde</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Direito</div>
+                            <div class="table-cell">Humanas</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="join-controls">
+                    <button class="btn" onclick="startJoinDemo('inner')">Iniciar Demonstração</button>
+                    <button class="btn btn-secondary" onclick="nextStep('inner')">Próximo Passo</button>
+                    <button class="btn btn-error" onclick="resetDemo('inner')">Reiniciar</button>
+                </div>
+                
+                <div class="result-vis hidden">
+                    <h4>Resultado: INNER JOIN</h4>
+                    <div class="table-row">
+                        <div class="table-cell">nome</div>
+                        <div class="table-cell">curso</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>LEFT JOIN</h2>
+            <p>O <strong>LEFT JOIN</strong> retorna todos os registros da tabela à esquerda (primeira tabela) e os registros correspondentes da tabela à direita (segunda tabela). Se não houver correspondência, os resultados da direita serão NULL.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">LEFT JOIN</span> Cursos c <span class="sql-keyword">ON</span> a.curso_id = c.id;</code></pre>
+            </div>
+            
+            <div class="join-visual">
+                <div class="join-caption">Visualização do LEFT JOIN: Todos os registros da tabela esquerda, com correspondências da direita ou NULL</div>
+            </div>
+            
+            <div class="join-demo" id="left-join-demo">
+                <div class="tables-container">
+                    <div class="table-vis">
+                        <h4>Alunos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell key-cell">curso_id</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Ana</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">João</div>
+                            <div class="table-cell key-cell">2</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Maria</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                        <div class="table-row" data-id="4">
+                            <div class="table-cell key-cell">4</div>
+                            <div class="table-cell">Pedro</div>
+                            <div class="table-cell key-cell">4</div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-vis">
+                        <h4>Cursos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell">area</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Engenharia</div>
+                            <div class="table-cell">Exatas</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">Medicina</div>
+                            <div class="table-cell">Saúde</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Direito</div>
+                            <div class="table-cell">Humanas</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="join-controls">
+                    <button class="btn" onclick="startJoinDemo('left')">Iniciar Demonstração</button>
+                    <button class="btn btn-secondary" onclick="nextStep('left')">Próximo Passo</button>
+                    <button class="btn btn-error" onclick="resetDemo('left')">Reiniciar</button>
+                </div>
+                
+                <div class="result-vis hidden">
+                    <h4>Resultado: LEFT JOIN</h4>
+                    <div class="table-row">
+                        <div class="table-cell">nome</div>
+                        <div class="table-cell">curso</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>RIGHT JOIN</h2>
+            <p>O <strong>RIGHT JOIN</strong> retorna todos os registros da tabela à direita (segunda tabela) e os registros correspondentes da tabela à esquerda (primeira tabela). Se não houver correspondência, os resultados da esquerda serão NULL.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">RIGHT JOIN</span> Cursos c <span class="sql-keyword">ON</span> a.curso_id = c.id;</code></pre>
+            </div>
+            
+            <div class="join-visual">
+                <div class="join-caption">Visualização do RIGHT JOIN: Todos os registros da tabela direita, com correspondências da esquerda ou NULL</div>
+            </div>
+            
+            <div class="join-demo" id="right-join-demo">
+                <div class="tables-container">
+                    <div class="table-vis">
+                        <h4>Alunos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell key-cell">curso_id</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Ana</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">João</div>
+                            <div class="table-cell key-cell">2</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Maria</div>
+                            <div class="table-cell key-cell">1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-vis">
+                        <h4>Cursos</h4>
+                        <div class="table-row">
+                            <div class="table-cell key-cell">id</div>
+                            <div class="table-cell">nome</div>
+                            <div class="table-cell">area</div>
+                        </div>
+                        <div class="table-row" data-id="1">
+                            <div class="table-cell key-cell">1</div>
+                            <div class="table-cell">Engenharia</div>
+                            <div class="table-cell">Exatas</div>
+                        </div>
+                        <div class="table-row" data-id="2">
+                            <div class="table-cell key-cell">2</div>
+                            <div class="table-cell">Medicina</div>
+                            <div class="table-cell">Saúde</div>
+                        </div>
+                        <div class="table-row" data-id="3">
+                            <div class="table-cell key-cell">3</div>
+                            <div class="table-cell">Direito</div>
+                            <div class="table-cell">Humanas</div>
+                        </div>
+                        <div class="table-row" data-id="4">
+                            <div class="table-cell key-cell">4</div>
+                            <div class="table-cell">Administração</div>
+                            <div class="table-cell">Humanas</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="join-controls">
+                    <button class="btn" onclick="startJoinDemo('right')">Iniciar Demonstração</button>
+                    <button class="btn btn-secondary" onclick="nextStep('right')">Próximo Passo</button>
+                    <button class="btn btn-error" onclick="resetDemo('right')">Reiniciar</button>
+                </div>
+                
+                <div class="result-vis hidden">
+                    <h4>Resultado: RIGHT JOIN</h4>
+                    <div class="table-row">
+                        <div class="table-cell">nome</div>
+                        <div class="table-cell">curso</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>FULL OUTER JOIN</h2>
+            <p>O <strong>FULL OUTER JOIN</strong> retorna todos os registros quando há uma correspondência na tabela esquerda ou direita. Se não houver correspondência, as colunas da tabela sem correspondência terão NULL.</p>
+            
+            <div class="alert alert-info">
+                <strong>Nota:</strong> O FULL OUTER JOIN não é suportado por todos os SGBDs (como MySQL). Pode ser simulado com UNION de LEFT e RIGHT JOIN.
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-comment">-- Simulação de FULL OUTER JOIN no MySQL</span>
+<span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">LEFT JOIN</span> Cursos c <span class="sql-keyword">ON</span> a.curso_id = c.id
+<span class="sql-keyword">UNION</span>
+<span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">RIGHT JOIN</span> Cursos c <span class="sql-keyword">ON</span> a.curso_id = c.id;</code></pre>
+            </div>
+            
+            <div class="join-visual">
+                <div class="join-caption">Visualização do FULL OUTER JOIN: Todos os registros de ambas as tabelas, com correspondências ou NULL</div>
+            </div>
+            
+            <h2>CROSS JOIN</h2>
+            <p>O <strong>CROSS JOIN</strong> retorna o produto cartesiano das duas tabelas - cada linha da primeira tabela é combinada com todas as linhas da segunda tabela.</p>
+            
+            <div class="alert alert-warning">
+                <strong>Cuidado:</strong> CROSS JOIN pode gerar resultados muito grandes se as tabelas forem grandes. Por exemplo, duas tabelas com 1000 registros cada produziriam 1.000.000 de registros!
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> a.nome, c.nome <span class="sql-keyword">AS</span> curso
+<span class="sql-keyword">FROM</span> Alunos a
+<span class="sql-keyword">CROSS JOIN</span> Cursos c;</code></pre>
+            </div>
+            
+            <div class="join-visual">
+                <div class="join-caption">Visualização do CROSS JOIN: Combinação de todas as linhas da primeira tabela com todas as linhas da segunda tabela</div>
+            </div>
+            
+            <!-- <div class="text-center mt-20">
+                <a class="btn" href="playground.html">Próximo: Playground →</a>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>

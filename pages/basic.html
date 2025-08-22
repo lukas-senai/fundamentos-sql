@@ -1,0 +1,144 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="basic.html" class="nav-link active">Básico</a></li>
+                    <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="joins.html" class="nav-link">JOINS</a></li>
+                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="exercise.html" class="nav-link">Exercícios</a></li>
+                    <li><a href="advanced.html" class="nav-link">Avançado</a></li>
+                    <li><a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>SQL Básico</h1>
+            <p>Nesta seção, você aprenderá os comandos fundamentais do SQL para criar e manipular bancos de dados. Vamos começar com os conceitos essenciais!</p>
+            
+            <h2>CREATE TABLE</h2>
+            <p>O comando <strong>CREATE TABLE</strong> é usado para criar uma nova tabela no banco de dados. Uma tabela é como uma planilha, com colunas (campos) e linhas (registros).</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Alunos (
+        id <span class="sql-keyword">INT PRIMARY KEY AUTO_INCREMENT</span>,
+        nome <span class="sql-keyword">VARCHAR</span>(100),
+        idade <span class="sql-keyword">INT</span>,
+        curso_id <span class="sql-keyword">INT</span>
+        );</code></pre>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>Explicação:</strong> PRIMARY KEY define a chave primária (identificador único) da tabela, e AUTO_INCREMENT faz com que o valor seja gerado automaticamente para cada novo registro.
+            </div>
+            
+            <h2>INSERT INTO</h2>
+            <p>O comando <strong>INSERT INTO</strong> é usado para inserir novos registros em uma tabela. Você precisa especificar os valores para cada coluna.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">INSERT INTO</span> Alunos (nome, idade, curso_id) 
+        <span class="sql-keyword">VALUES</span> 
+        ('Ana', 19, 1),
+        ('João', 22, 2),
+        ('Maria', 20, 1);</code></pre>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>Dica:</strong> A ordem dos valores deve corresponder à ordem das colunas especificadas. Você pode inserir múltiplos registros de uma vez separando-os por vírgulas.
+            </div>
+            
+            <h2>SELECT</h2>
+            <p>O comando <strong>SELECT</strong> é usado para consultar dados de um banco de dados. É o comando mais frequente em SQL.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos;</code></pre>
+            </div>
+            
+            <p>O asterisco (*) significa "todas as colunas". Para selecionar colunas específicas:</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> nome, idade <span class="sql-keyword">FROM</span> Alunos;</code></pre>
+            </div>
+            
+            <h2>WHERE</h2>
+            <p>A cláusula <strong>WHERE</strong> é usada para filtrar registros com base em condições específicas. Imagine isso como um filtro em uma planilha.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos 
+        <span class="sql-keyword">WHERE</span> idade > 20;</code></pre>
+            </div>
+            
+            <p>Operadores comuns usados com WHERE:</p>
+            <ul>
+                <li><strong>=</strong> Igual</li>
+                <li><strong>!=</strong> ou <strong><></strong> Diferente</li>
+                <li><strong>></strong> Maior que</li>
+                <li><strong><</strong> Menor que</li>
+                <li><strong>>=</strong> Maior ou igual</li>
+                <li><strong><=</strong> Menor ou igual</li>
+                <li><strong>LIKE</strong> Busca por padrão de texto</li>
+                <li><strong>IN</strong> Verifica se um valor está em uma lista</li>
+                <li><strong>BETWEEN</strong> Verifica se um valor está entre dois valores</li>
+            </ul>
+            
+            <h2>UPDATE</h2>
+            <p>O comando <strong>UPDATE</strong> é usado para modificar registros existentes em uma tabela.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">UPDATE</span> Alunos 
+        <span class="sql-keyword">SET</span> idade = 21 
+        <span class="sql-keyword">WHERE</span> nome = 'Ana';</code></pre>
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>Cuidado crítico:</strong> Sempre use WHERE com UPDATE! Se você esquecer o WHERE, todos os registros da tabela serão atualizados, o que pode causar grandes problemas.
+            </div>
+            
+            <h2>DELETE</h2>
+            <p>O comando <strong>DELETE</strong> é usado para excluir registros de uma tabela.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                <pre><code><span class="sql-keyword">DELETE FROM</span> Alunos 
+        <span class="sql-keyword">WHERE</span> id = 3;</code></pre>
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>Cuidado crítico:</strong> Assim como com UPDATE, sempre use WHERE com DELETE! Caso contrário, você excluirá todos os registros da tabela.
+            </div>
+            
+            <!-- <div class="text-center mt-20">
+                <a class="btn" href="intermediate.html">Próximo: SQL Intermediário →</a>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>

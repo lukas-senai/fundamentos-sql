@@ -1,0 +1,139 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="basic.html" class="nav-link">Básico</a></li>
+                    <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="joins.html" class="nav-link">JOINS</a></li>
+                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="exercise.html" class="nav-link active">Exercícios</a></li>
+                    <li><a href="advanced.html" class="nav-link">Avançado</a></li>
+                    <li><a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+        <h1>Exercícios e Quiz</h1>
+            <p>Teste seus conhecimentos de SQL com estas questões. Ao final, você receberá um resumo do seu desempenho.</p>
+            
+            <div id="quiz-container">
+                <div class="quiz-question" data-question="1">
+                    <h3>1. Qual comando SQL é usado para inserir novos dados em uma tabela?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="A">A) INSERT INTO</div>
+                        <div class="quiz-option" data-value="B">B) ADD RECORD</div>
+                        <div class="quiz-option" data-value="C">C) CREATE ROW</div>
+                        <div class="quiz-option" data-value="D">D) NEW ENTRY</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="2">
+                    <h3>2. O que a seguinte consulta retorna?<br><code>SELECT nome FROM Alunos WHERE idade > 20;</code></h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="A">A) Todos os nomes da tabela Alunos</div>
+                        <div class="quiz-option" data-value="B">B) Os nomes dos alunos com idade maior que 20</div>
+                        <div class="quiz-option" data-value="C">C) Os nomes e idades dos alunos com mais de 20 anos</div>
+                        <div class="quiz-option" data-value="D">D) A quantidade de alunos com mais de 20 anos</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="3">
+                    <h3>3. Complete a consulta para selecionar todos os alunos com idade igual a 21:</h3>
+                    <p>SELECT * FROM Alunos <span class="fill-in-blank" contenteditable="true" id="fill-3"></span></p>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="4">
+                    <h3>4. Qual comando é usado para atualizar dados existentes em uma tabela?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="A">A) MODIFY</div>
+                        <div class="quiz-option" data-value="B">B) ALTER</div>
+                        <div class="quiz-option" data-value="C">C) UPDATE</div>
+                        <div class="quiz-option" data-value="D">D) CHANGE</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="5">
+                    <h3>5. Complete a consulta para ordenar os alunos por nome em ordem alfabética:</h3>
+                    <p>SELECT * FROM Alunos <span class="fill-in-blank" contenteditable="true" id="fill-5"></span></p>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="6">
+                    <h3>6. O que acontece se você executar um comando DELETE sem a cláusula WHERE?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="A">A) Nada, a sintaxe está incorreta</div>
+                        <div class="quiz-option" data-value="B">B) Apenas a primeira linha é excluída</div>
+                        <div class="quiz-option" data-value="C">C) Todas as linhas da tabela são excluídas</div>
+                        <div class="quiz-option" data-value="D">D) A tabela é excluída do banco de dados</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="7">
+                    <h3>7. Complete a consulta para contar o número total de alunos:</h3>
+                    <p><span class="fill-in-blank" contenteditable="true" id="fill-7"></span> FROM Alunos;</p>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz-question" data-question="8">
+                    <h3>8. Qual tipo de JOIN retorna todos os registros da tabela à esquerda, mesmo sem correspondência na direita?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="A">A) INNER JOIN</div>
+                        <div class="quiz-option" data-value="B">B) LEFT JOIN</div>
+                        <div class="quiz-option" data-value="C">C) RIGHT JOIN</div>
+                        <div class="quiz-option" data-value="D">D) FULL JOIN</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="text-center mt-20">
+                    <button class="btn" onclick="checkQuiz()">Verificar Respostas</button>
+                </div>
+            </div>
+            
+            <div id="quiz-results" class="quiz-results hidden">
+                <h2>Resultado do Quiz</h2>
+                <div class="progress-bar">
+                    <div id="quiz-progress" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="quiz-score"></p>
+                <div id="quiz-review"></div>
+                <div class="text-center mt-20">
+                    <button class="btn" onclick="resetQuiz()">Tentar Novamente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuiz();
+        });
+    </script>
+</body>
+</html>

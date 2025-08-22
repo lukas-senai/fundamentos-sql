@@ -1,0 +1,77 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutor - Aprenda SQL de Forma Interativa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SQL Tutor</div>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="basic.html" class="nav-link">Básico</a></li>
+                    <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
+                    <li><a href="joins.html" class="nav-link">JOINS</a></li>
+                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
+                    <li><a href="exercise.html" class="nav-link">Exercícios</a></li>
+                    <li><a href="advanced.html" class="nav-link active">Avançado</a></li>
+                    <li><a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Tópicos Avançados de SQL</h1>
+            <p>Estes são alguns conceitos avançados de SQL que você pode explorar após dominar o conteúdo básico e intermediário.</p>
+            
+            <h2>Stored Procedures</h2>
+            <p>Blocos de código SQL armazenados no banco de dados que podem ser chamados com parâmetros, permitindo reutilização e encapsulamento de lógica complexa.</p>
+            
+            <h2>Triggers</h2>
+            <p>Procedimentos automáticos executados em resposta a eventos específicos (INSERT, UPDATE, DELETE) em tabelas, úteis para auditoria e manutenção de integridade.</p>
+            
+            <h2>Views</h2>
+            <p>Consultas salvas que se comportam como tabelas virtuais, simplificando queries complexas e controlando o acesso a dados sensíveis.</p>
+            
+            <h2>UDF (Funções Definidas pelo Usuário)</h2>
+            <p>Funções personalizadas criadas pelos usuários para executar lógica reutilizável em consultas SQL, podendo ser usadas em SELECT, WHERE e outras cláusulas.</p>
+            
+            <h2>CTE e Recursividade</h2>
+            <p>Common Table Expressions (CTEs) permitem criar consultas mais legíveis e organizadas, com capacidade de recursividade para trabalhar com dados hierárquicos.</p>
+            
+            <h2>Índices e Otimização</h2>
+            <p>Estruturas que aceleram operações de busca, mas com custo de armazenamento e atualização. O comando EXPLAIN ajuda a analisar o plano de execução de queries.</p>
+            
+            <h2>Transações (ACID)</h2>
+            <p>Agrupamento de operações que devem ser executadas atomicamente (todas ou nenhuma), garantindo consistência, isolamento e durabilidade dos dados.</p>
+            
+            <h2>Particionamento/Sharding</h2>
+            <p>Divisão de grandes tabelas em partes menores para melhor performance e gerenciamento, distribuindo dados entre diferentes servidores ou discos.</p>
+            
+            <h2>Segurança/Permissões</h2>
+            <p>Controle de acesso granular através de comandos GRANT/REVOKE, aplicando o princípio do menor privilégio para proteger dados sensíveis.</p>
+            
+            <h2>JSON/XML no SQL</h2>
+            <p>Manipulação de dados semiestruturados diretamente no SQL através de funções nativas para trabalhar com formats JSON e XML.</p>
+            
+            <!-- <div class="text-center mt-20">
+                <a class="btn" href="cheat-sheet.html">Próximo: Cheat Sheet →</a>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Feito com ❤️ pelo professor Lucas</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>
