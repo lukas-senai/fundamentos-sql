@@ -16,7 +16,6 @@
                     <li><a href="basic.html" class="nav-link active">Básico</a></li>
                     <li><a href="intermediate.html" class="nav-link">Intermediário</a></li>
                     <li><a href="joins.html" class="nav-link">JOINS</a></li>
-                    <!-- <li><a href="playground.html" class="nav-link">Playground</a></li> -->
                     <li><a href="exercise.html" class="nav-link">Exercícios</a></li>
                     <li><a href="advanced.html" class="nav-link">Avançado</a></li>
                     <li><a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a></li>
@@ -35,28 +34,87 @@
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">CREATE TABLE</span> Alunos (
-        id <span class="sql-keyword">INT PRIMARY KEY AUTO_INCREMENT</span>,
-        nome <span class="sql-keyword">VARCHAR</span>(100),
-        idade <span class="sql-keyword">INT</span>,
-        curso_id <span class="sql-keyword">INT</span>
-        );</code></pre>
+<pre><code><span class="sql-keyword">CREATE TABLE</span> Alunos (
+    id <span class="sql-keyword">INT PRIMARY KEY AUTO_INCREMENT</span>,
+    nome <span class="sql-keyword">VARCHAR</span>(100),
+    idade <span class="sql-keyword">INT</span>,
+    curso_id <span class="sql-keyword">INT</span>
+);</code></pre>
             </div>
             
             <div class="alert alert-info">
                 <strong>Explicação:</strong> PRIMARY KEY define a chave primária (identificador único) da tabela, e AUTO_INCREMENT faz com que o valor seja gerado automaticamente para cada novo registro.
             </div>
+
+            <h2>ALTER TABLE</h2>
+            <p>O comando <strong>ALTER TABLE</strong> é usado para modificar uma tabela já existente. Você pode adicionar, remover ou alterar colunas.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+<pre><code><span class="sql-keyword">ALTER TABLE</span> Alunos 
+<span class="sql-keyword">ADD</span> email <span class="sql-keyword">VARCHAR</span>(150);</code></pre>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Explicação:</strong> Nesse exemplo, estamos adicionando uma nova coluna chamada <code>email</code>. Também podemos usar <code>DROP COLUMN</code> para excluir colunas ou <code>MODIFY</code> para alterar o tipo de dados.
+            </div>
+
+            <h2>DROP TABLE</h2>
+            <p>O comando <strong>DROP TABLE</strong> é usado para excluir uma tabela do banco de dados. <strong>Atenção:</strong> todos os dados dentro dela serão perdidos!</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+<pre><code><span class="sql-keyword">DROP TABLE</span> Alunos;</code></pre>
+            </div>
+
+            <h2>TRUNCATE</h2>
+            <p>O comando <strong>TRUNCATE</strong> remove <em>todos os registros</em> de uma tabela, mas mantém sua estrutura (colunas e restrições). É como "esvaziar" a tabela.</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+<pre><code><span class="sql-keyword">TRUNCATE TABLE</span> Alunos;</code></pre>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>Cuidado:</strong> Diferente do <code>DELETE</code>, o <code>TRUNCATE</code> não pode ser revertido com facilidade e geralmente é mais rápido para limpar a tabela.
+            </div>
+
+            <h2>Relacionando Tabelas (FOREIGN KEY)</h2>
+            <p>Em bancos de dados relacionais, tabelas podem estar ligadas entre si. Isso é feito com <strong>chaves estrangeiras (FOREIGN KEY)</strong>.</p>
+            <p>No exemplo abaixo, cada aluno está relacionado a um curso. Criamos uma tabela <code>Cursos</code> e usamos <code>curso_id</code> como chave estrangeira na tabela <code>Alunos</code>.</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+<pre><code><span class="sql-keyword">CREATE TABLE</span> Cursos (
+    id <span class="sql-keyword">INT PRIMARY KEY AUTO_INCREMENT</span>,
+    nome <span class="sql-keyword">VARCHAR</span>(100)
+);
+
+<span class="sql-keyword">CREATE TABLE</span> Alunos (
+    id <span class="sql-keyword">INT PRIMARY KEY AUTO_INCREMENT</span>,
+    nome <span class="sql-keyword">VARCHAR</span>(100),
+    idade <span class="sql-keyword">INT</span>,
+    curso_id <span class="sql-keyword">INT</span>,
+    <span class="sql-keyword">FOREIGN KEY</span> (curso_id) <span class="sql-keyword">REFERENCES</span> Cursos(id)
+);</code></pre>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Explicação:</strong> A chave estrangeira garante que um aluno só pode ser associado a um curso existente. Isso mantém a integridade dos dados.
+            </div>
+
+            <hr>
             
             <h2>INSERT INTO</h2>
             <p>O comando <strong>INSERT INTO</strong> é usado para inserir novos registros em uma tabela. Você precisa especificar os valores para cada coluna.</p>
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">INSERT INTO</span> Alunos (nome, idade, curso_id) 
-        <span class="sql-keyword">VALUES</span> 
-        ('Ana', 19, 1),
-        ('João', 22, 2),
-        ('Maria', 20, 1);</code></pre>
+<pre><code><span class="sql-keyword">INSERT INTO</span> Alunos (nome, idade, curso_id) 
+<span class="sql-keyword">VALUES</span> 
+('Ana', 19, 1),
+('João', 22, 2),
+('Maria', 20, 1);</code></pre>
             </div>
             
             <div class="alert alert-info">
@@ -68,14 +126,14 @@
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos;</code></pre>
+<pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos;</code></pre>
             </div>
             
             <p>O asterisco (*) significa "todas as colunas". Para selecionar colunas específicas:</p>
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">SELECT</span> nome, idade <span class="sql-keyword">FROM</span> Alunos;</code></pre>
+<pre><code><span class="sql-keyword">SELECT</span> nome, idade <span class="sql-keyword">FROM</span> Alunos;</code></pre>
             </div>
             
             <h2>WHERE</h2>
@@ -83,8 +141,8 @@
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos 
-        <span class="sql-keyword">WHERE</span> idade > 20;</code></pre>
+<pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Alunos 
+<span class="sql-keyword">WHERE</span> idade > 20;</code></pre>
             </div>
             
             <p>Operadores comuns usados com WHERE:</p>
@@ -105,9 +163,9 @@
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">UPDATE</span> Alunos 
-        <span class="sql-keyword">SET</span> idade = 21 
-        <span class="sql-keyword">WHERE</span> nome = 'Ana';</code></pre>
+<pre><code><span class="sql-keyword">UPDATE</span> Alunos 
+<span class="sql-keyword">SET</span> idade = 21 
+<span class="sql-keyword">WHERE</span> nome = 'Ana';</code></pre>
             </div>
             
             <div class="alert alert-warning">
@@ -119,17 +177,13 @@
             
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                <pre><code><span class="sql-keyword">DELETE FROM</span> Alunos 
-        <span class="sql-keyword">WHERE</span> id = 3;</code></pre>
+<pre><code><span class="sql-keyword">DELETE FROM</span> Alunos 
+<span class="sql-keyword">WHERE</span> id = 3;</code></pre>
             </div>
             
             <div class="alert alert-warning">
                 <strong>Cuidado crítico:</strong> Assim como com UPDATE, sempre use WHERE com DELETE! Caso contrário, você excluirá todos os registros da tabela.
             </div>
-            
-            <!-- <div class="text-center mt-20">
-                <a class="btn" href="intermediate.html">Próximo: SQL Intermediário →</a>
-            </div> -->
         </div>
     </main>
 
